@@ -22,7 +22,7 @@ public class FriendshipsMongoEasyMockTest {
 	//A nice mock expects recorded calls in any order and returning null for other calls
 	@Mock(type = MockType.NICE)
 	FriendsCollection friends;
-	
+
 	@Test
 	public void mockingWorksAsExpected(){
 		Person joe = new Person("Joe");
@@ -32,12 +32,12 @@ public class FriendshipsMongoEasyMockTest {
 		replay(friends);
 		assertThat(friends.findByName("Joe")).isEqualTo(joe);
 	}
-	
+
 	@Test
 	public void alexDoesNotHaveFriends(){
 		assertThat(friendships.getFriendsList("Alex")).isEmpty();
 	}
-	
+
 	@Test
 	public void joeHas5Friends(){
 		List<String> expected = Arrays.asList(new String[]{"Karol","Dawid","Maciej","Tomek","Adam"});
@@ -111,5 +111,4 @@ public class FriendshipsMongoEasyMockTest {
 
 		assertThat(friendships.areFriends("Joe","Alex")).isFalse();
 	}
-
 }
